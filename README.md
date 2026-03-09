@@ -22,6 +22,42 @@ The central challenge is that the unknown lives in $L^2([0,T])$ — there is no 
 
 ---
 
+## Repository Structure
+
+```
+bayesian-path-filtering/
+├── README.md
+├── theory/
+│   ├── 01_posterior_existence.md        # Well-posedness on function space
+│   ├── 02_contraction_rates.md          # Posterior consistency theorems
+│   ├── 03_discretization_stability.md   # Euler-Maruyama convergence
+│   └── 04_sigma_problem.md              # Why diffusion estimation is harder
+├── notes/
+│   ├── literature_map.md                # Key references and how they connect
+│   ├── open_problems.md                 # Unresolved questions and conjectures
+│   └── proof_sketches.md                # Informal arguments and intuitions
+├── simulations/
+│   ├── gp_prior.py                      # GP prior sampling on [0,T]
+│   ├── girsanov_likelihood.py           # Girsanov density computation
+│   ├── posterior_drift.py               # Full posterior for drift-only case
+│   ├── discretization_error.py          # Hellinger distance vs mesh size δ
+│   └── utils.py                         # Shared numerical utilities
+├── notebooks/
+│   ├── 01_gp_priors_on_path_space.ipynb
+│   ├── 02_girsanov_likelihood.ipynb
+│   └── 03_posterior_contraction.ipynb
+├── tests/
+│   ├── test_gp_prior.py
+│   ├── test_girsanov.py
+│   └── test_discretization.py
+├── references/
+│   └── bibliography.bib
+├── requirements.txt
+└── .gitignore
+```
+
+---
+
 ## Research Problems
 
 ### 1. Posterior Existence in Function Space
@@ -33,56 +69,55 @@ Key requirements:
 - Absolute continuity of the posterior w.r.t. the prior
 - Cameron-Martin space arguments specific to the chosen kernel class
 
-**Reference framework:** Stuart (2010) — Bayesian inverse problems in Banach spaces; Da Prato & Zabczyk — SPDEs in infinite dimensions.
+**Reference framework:** Stuart (2010); Da Prato & Zabczyk (1992).
 
 ### 2. Posterior Consistency in Infinite Dimension
 
-As observations become dense (or $T \to \infty$), does the posterior concentrate around the true $(\mu^*, \sigma^*)$?
-
 **Proposed theorem direction:**
 
-> *If $\mu^* \in H^s([0,T])$ and the GP prior has a Matérn kernel with smoothness parameter $\nu > s$, then the posterior contracts around $\mu^*$ at rate $n^{-s/(2s+1)}$ in $L^2$.*
+> *If $\mu^* \in H^s([0,T])$ and the GP prior has a Matérn kernel with smoothness $\nu > s$, then the posterior contracts around $\mu^*$ at rate $n^{-s/(2s+1)}$ in $L^2$.*
 
-This rate is minimax optimal for nonparametric drift estimation. The SDE setting introduces ill-posedness absent in direct regression: $\mu_t$ is observed only through an integral functional (the path $X_t$), slowing contraction relative to the direct-observation case.
-
-**Reference framework:** van der Vaart & van Zanten (2008, 2011) on GP posterior contraction; Schwartz's theorem generalized to infinite-dimensional spaces.
+**Reference framework:** van der Vaart & van Zanten (2008, 2011).
 
 ### 3. Stability Under Discretization
 
-Does the posterior computed from discrete observations $X_{t_0}, \ldots, X_{t_n}$ converge to the continuous-time posterior as mesh $\delta = \max|t_{i+1} - t_i| \to 0$?
-
 **Proposed theorem direction:**
 
-> *The Hellinger distance between the continuous-time posterior and the Euler-Maruyama discretized posterior is $\mathcal{O}(\delta^{1/2})$, matching the strong convergence rate of Euler-Maruyama.*
+> *The Hellinger distance between the continuous-time posterior and the Euler-Maruyama discretized posterior is $\mathcal{O}(\delta^{1/2})$.*
 
-**Reference framework:** Cotter, Roberts, Stuart & White (2013) — MCMC for infinite-dimensional Bayesian problems; preconditioned Crank-Nicolson (pCN) proposals.
-
----
-
-## The $\sigma$ Problem
-
-Diffusion coefficient estimation is harder than drift estimation for structural reasons:
-
-- $\mu$ is **non-identifiable** from quadratic variation at fixed $T$ — only $\sigma$ is identified from QV
-- The joint posterior $p(\mu, \sigma \mid X_{0:T})$ is **not product-structured** — $\mu$ and $\sigma$ are a posteriori dependent even under independent priors
-- The Girsanov density involves $\sigma^{-1}$, creating integrability issues when the GP prior assigns mass near zero
-
-Addressing this requires log-normal GP priors (to enforce positivity) and separate treatment via local time or $p$-variation arguments.
+**Reference framework:** Cotter, Roberts, Stuart & White (2013).
 
 ---
 
-## Scope and Roadmap
+## Quickstart
+
+```bash
+git clone https://github.com/your-username/bayesian-path-filtering
+cd bayesian-path-filtering
+pip install -r requirements.txt
+
+# Run GP prior simulation
+python simulations/gp_prior.py
+
+# Run posterior drift estimation
+python simulations/posterior_drift.py
+
+# Run all tests
+pytest tests/
+```
+
+---
+
+## Roadmap
 
 | Milestone | Status |
 |-----------|--------|
 | Literature review: GP nonparametric Bayes | 🔲 |
-| Posterior existence for fixed $\sigma$ (drift-only) | 🔲 |
+| Posterior existence for fixed σ (drift-only) | 🔲 |
 | Posterior contraction rates (drift, continuous obs.) | 🔲 |
 | Discretization stability theorem | 🔲 |
-| Joint $(\mu, \sigma)$ posterior: existence | 🔲 |
+| Joint (μ, σ) posterior: existence | 🔲 |
 | Simulation study: GP posterior vs. particle filter | 🔲 |
-
-The recommended near-term scope is **"Posterior contraction rates for GP priors on SDE drift functions under continuous observation"** — tractable, connects cleanly to existing literature, and produces a self-contained theorem.
 
 ---
 
@@ -90,21 +125,10 @@ The recommended near-term scope is **"Posterior contraction rates for GP priors 
 
 - **Stuart, A.M. (2010).** Inverse problems: A Bayesian perspective. *Acta Numerica*, 19, 451–559.
 - **van der Vaart, A. & van Zanten, H. (2008).** Rates of contraction of posterior distributions based on Gaussian process priors. *Annals of Statistics*, 36(3), 1435–1463.
-- **van der Vaart, A. & van Zanten, H. (2011).** Information rates of nonparametric Gaussian process methods. *Journal of Machine Learning Research*, 12, 2095–2119.
-- **Cotter, S.L., Roberts, G.O., Stuart, A.M., & White, D. (2013).** MCMC methods for functions: modifying old algorithms to make them faster. *Statistical Science*, 28(3), 424–446.
+- **van der Vaart, A. & van Zanten, H. (2011).** Information rates of nonparametric Gaussian process methods. *JMLR*, 12, 2095–2119.
+- **Cotter, S.L., Roberts, G.O., Stuart, A.M., & White, D. (2013).** MCMC methods for functions. *Statistical Science*, 28(3), 424–446.
 - **Da Prato, G. & Zabczyk, J. (1992).** *Stochastic Equations in Infinite Dimensions.* Cambridge University Press.
 - **Liptser, R.S. & Shiryaev, A.N. (2001).** *Statistics of Random Processes.* Springer.
-
----
-
-## Contributing
-
-This is an active research project. If you are working on related problems in:
-- Nonparametric Bayesian inference for SDEs
-- Gaussian process priors on path spaces
-- Infinite-dimensional MCMC
-
-feel free to open an issue or reach out.
 
 ---
 
