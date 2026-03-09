@@ -1,0 +1,239 @@
+% bibliography.bib — References for Bayesian Filtering on Infinite-Dimensional Path Spaces
+
+% ============================================================
+% Core Framework
+% ============================================================
+
+@article{stuart2010,
+  author    = {Stuart, Andrew M.},
+  title     = {Inverse problems: {A} {B}ayesian perspective},
+  journal   = {Acta Numerica},
+  volume    = {19},
+  pages     = {451--559},
+  year      = {2010},
+  doi       = {10.1017/S0962492910000061},
+  note      = {Foundational reference for Bayesian inference in Banach spaces. §3 (Gaussian priors) and §4 (well-posedness) are directly relevant.}
+}
+
+@article{vdv_vz_2008,
+  author    = {van der Vaart, Aad W. and van Zanten, J. Harry},
+  title     = {Rates of contraction of posterior distributions based on {G}aussian process priors},
+  journal   = {The Annals of Statistics},
+  volume    = {36},
+  number    = {3},
+  pages     = {1435--1463},
+  year      = {2008},
+  doi       = {10.1214/009053607000000613},
+  note      = {Key reference for posterior contraction rates. Minimax rates for Matérn priors in regression.}
+}
+
+@article{vdv_vz_2011,
+  author    = {van der Vaart, Aad W. and van Zanten, J. Harry},
+  title     = {Information rates of nonparametric {G}aussian process methods},
+  journal   = {Journal of Machine Learning Research},
+  volume    = {12},
+  pages     = {2095--2119},
+  year      = {2011},
+  note      = {RKHS characterization of GP posterior behavior. Connects kernel smoothness to contraction rates.}
+}
+
+@article{cotter2013,
+  author    = {Cotter, Simon L. and Roberts, Gareth O. and Stuart, Andrew M. and White, David},
+  title     = {{MCMC} methods for functions: modifying old algorithms to make them faster},
+  journal   = {Statistical Science},
+  volume    = {28},
+  number    = {3},
+  pages     = {424--446},
+  year      = {2013},
+  doi       = {10.1214/13-STS421},
+  note      = {Introduces preconditioned Crank-Nicolson (pCN) MCMC. Dimension-robust sampling for infinite-dimensional posteriors.}
+}
+
+% ============================================================
+% SDE-Specific
+% ============================================================
+
+@article{nickl_sohl_2017,
+  author    = {Nickl, Richard and S{\"o}hl, Jakob},
+  title     = {Nonparametric {B}ayesian posterior contraction rates for discretely observed scalar diffusions},
+  journal   = {The Annals of Statistics},
+  volume    = {45},
+  number    = {4},
+  pages     = {1664--1693},
+  year      = {2017},
+  doi       = {10.1214/16-AOS1504},
+  note      = {Closest existing paper to our setting. Proves contraction rates for drift estimation under discrete observation using wavelet priors.}
+}
+
+@book{liptser_shiryaev_2001,
+  author    = {Liptser, Robert S. and Shiryaev, Albert N.},
+  title     = {Statistics of Random Processes {I} \& {II}},
+  publisher = {Springer},
+  year      = {2001},
+  edition   = {2nd},
+  note      = {Definitive reference for likelihood-based inference for stochastic processes. Ch. 7: Girsanov formula. Ch. 17: nonparametric estimation for diffusions.}
+}
+
+@article{florens_zmirou_1993,
+  author    = {Florens-Zmirou, Danielle},
+  title     = {On estimating the diffusion coefficient from discrete observations},
+  journal   = {Journal of Applied Probability},
+  volume    = {30},
+  number    = {4},
+  pages     = {790--804},
+  year      = {1993},
+  doi       = {10.2307/3214513},
+  note      = {Nonparametric kernel estimator for diffusion coefficient σ²(x) via occupation time arguments.}
+}
+
+@article{bn_shephard_2002,
+  author    = {Barndorff-Nielsen, Ole E. and Shephard, Neil},
+  title     = {Econometric analysis of realized volatility and its use in estimating stochastic volatility models},
+  journal   = {Journal of the Royal Statistical Society: Series B},
+  volume    = {64},
+  number    = {2},
+  pages     = {253--280},
+  year      = {2002},
+  doi       = {10.1111/1467-9868.00336},
+  note      = {Theory of realized volatility as consistent estimator of integrated variance. Basis for two-stage (σ then μ) estimation strategy.}
+}
+
+@article{bibby_sorensen_1995,
+  author    = {Bibby, Bo Martin and S{\o}rensen, Michael},
+  title     = {Martingale estimation functions for discretely observed diffusion processes},
+  journal   = {Bernoulli},
+  volume    = {1},
+  number    = {1--2},
+  pages     = {17--39},
+  year      = {1995},
+  doi       = {10.2307/3318679},
+  note      = {Martingale estimating equations for diffusion parameters.}
+}
+
+% ============================================================
+% Functional Analysis & Measure Theory
+% ============================================================
+
+@book{da_prato_zabczyk_1992,
+  author    = {Da Prato, Giuseppe and Zabczyk, Jerzy},
+  title     = {Stochastic Equations in Infinite Dimensions},
+  publisher = {Cambridge University Press},
+  year      = {1992},
+  note      = {Foundational reference for SPDEs. Ch. 1: Gaussian measures on Hilbert spaces. Ch. 4: Cameron-Martin theorem.}
+}
+
+@book{bogachev_1998,
+  author    = {Bogachev, Vladimir I.},
+  title     = {Gaussian Measures},
+  publisher = {American Mathematical Society},
+  year      = {1998},
+  note      = {Comprehensive treatment of Gaussian measures on infinite-dimensional spaces. Ch. 2: Cameron-Martin spaces. Ch. 4: small-ball probabilities.}
+}
+
+@article{hairer_stuart_vollmer_2014,
+  author    = {Hairer, Martin and Stuart, Andrew M. and Vollmer, Sebastian J.},
+  title     = {Spectral gaps for a {M}etropolis-{H}astings algorithm in infinite dimensions},
+  journal   = {The Annals of Applied Probability},
+  volume    = {24},
+  number    = {6},
+  pages     = {2455--2490},
+  year      = {2014},
+  doi       = {10.1214/13-AAP982},
+  note      = {Spectral gap for pCN MCMC bounded away from zero uniformly in discretization dimension. Key result for computational tractability.}
+}
+
+% ============================================================
+% Posterior Contraction Theory
+% ============================================================
+
+@article{ghosal_vdv_2007,
+  author    = {Ghosal, Subhashis and van der Vaart, Aad W.},
+  title     = {Convergence rates of posterior distributions for non-{i.i.d.} observations},
+  journal   = {The Annals of Statistics},
+  volume    = {35},
+  number    = {1},
+  pages     = {192--223},
+  year      = {2007},
+  doi       = {10.1214/009053606000001172},
+  note      = {Posterior contraction for non-i.i.d. observations. Framework for extending regression results to dependent data.}
+}
+
+@article{castillo_nickl_2014,
+  author    = {Castillo, Isma{\"e}l and Nickl, Richard},
+  title     = {On the {B}ernstein-{v}on {M}ises phenomenon for nonparametric {B}ayes procedures},
+  journal   = {The Annals of Statistics},
+  volume    = {42},
+  number    = {5},
+  pages     = {1941--1969},
+  year      = {2014},
+  doi       = {10.1214/14-AOS1246},
+  note      = {BvM theorem for Gaussian white noise. Most relevant precursor to the path-space BvM conjecture (OP-6).}
+}
+
+@book{nickl_2023,
+  author    = {Nickl, Richard},
+  title     = {Bayesian Non-Linear Statistical Inverse Problems},
+  publisher = {Z{\"u}rich Lectures in Advanced Mathematics, EMS},
+  year      = {2023},
+  note      = {Most recent comprehensive treatment of Bayesian nonparametric inverse problems. Relevant to OP-6 and OP-7.}
+}
+
+% ============================================================
+% Numerical Methods for SDEs
+% ============================================================
+
+@book{kloeden_platen_1992,
+  author    = {Kloeden, Peter E. and Platen, Eckhard},
+  title     = {Numerical Solution of Stochastic Differential Equations},
+  publisher = {Springer},
+  year      = {1992},
+  note      = {Definitive reference for SDE numerics. Ch. 9: Euler-Maruyama and Milstein convergence rates.}
+}
+
+@article{roberts_rosenthal_2001,
+  author    = {Roberts, Gareth O. and Rosenthal, Jeffrey S.},
+  title     = {Optimal scaling for various {M}etropolis-{H}astings algorithms},
+  journal   = {Statistical Science},
+  volume    = {16},
+  number    = {4},
+  pages     = {351--367},
+  year      = {2001},
+  doi       = {10.1214/ss/1015346320},
+  note      = {Optimal scaling $\beta \asymp n^{-1/4}$ for MCMC proposals. Adapted to infinite-dimensional pCN.}
+}
+
+% ============================================================
+% Classical Estimation Theory
+% ============================================================
+
+@article{girsanov_1960,
+  author    = {Girsanov, Igor V.},
+  title     = {On transforming a certain class of stochastic processes by absolutely continuous substitution of measures},
+  journal   = {Theory of Probability \& Its Applications},
+  volume    = {5},
+  number    = {3},
+  pages     = {285--301},
+  year      = {1960},
+  doi       = {10.1137/1105027},
+  note      = {Original Girsanov theorem. Foundation for all likelihood-based inference for diffusion processes.}
+}
+
+@book{ibragimov_hasminski_1981,
+  author    = {Ibragimov, Il'dar A. and Has'minskii, Rafail Z.},
+  title     = {Statistical Estimation: Asymptotic Theory},
+  publisher = {Springer},
+  year      = {1981},
+  note      = {LAN theory for stochastic processes. Parametric Cramér-Rao bounds for SDE drift estimation.}
+}
+
+@article{kuelbs_li_1993,
+  author    = {Kuelbs, James D. and Li, Wenbo V.},
+  title     = {Metric entropy and the small ball problem for {G}aussian measures},
+  journal   = {Journal of Functional Analysis},
+  volume    = {116},
+  number    = {1},
+  pages     = {133--157},
+  year      = {1993},
+  doi       = {10.1006/jfan.1993.1108},
+  note      = {Small-ball probabilities for GP priors. Entropy function $\phi(\varepsilon) \asymp \varepsilon^{-1/\nu}$ for Matérn kernels.}
+}
