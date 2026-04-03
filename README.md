@@ -3,11 +3,11 @@
 <br/>
 
 ```
-                      ╔══════════════════════════════════════════════════════════════════╗
-                      ║   BAYESIAN FILTERING ON INFINITE-DIMENSIONAL PATH SPACES         ║
-                      ║   Posterior inference over stochastic operators via              ║
-                      ║   Gaussian Process priors & Girsanov-Radon-Nikodym derivatives  ║
-                      ╚══════════════════════════════════════════════════════════════════╝
+                ╔══════════════════════════════════════════════════════════════════╗
+                ║   BAYESIAN FILTERING ON INFINITE-DIMENSIONAL PATH SPACES         ║
+                ║   Posterior inference over stochastic operators via              ║
+                ║   Gaussian Process priors & Girsanov-Radon-Nikodym derivatives   ║
+                ╚══════════════════════════════════════════════════════════════════╝
 ```
 
 [![arXiv](https://img.shields.io/badge/arXiv-2604.XXXXX-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2604.XXXXX)
